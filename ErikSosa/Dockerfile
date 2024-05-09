@@ -11,9 +11,9 @@ RUN pip install -r Requirements.txt
 
 COPY ./ ./
 
-COPY ./entrypoint.sh ./  
-RUN chmod +x entrypoint.sh  
-RUN chmod 777 entrypoint.sh  
+# COPY ./entrypoint.sh ./  
+# RUN chmod +x entrypoint.sh  
+# RUN chmod 777 entrypoint.sh  
 
 # COPY wait-for-it.sh ./
 
