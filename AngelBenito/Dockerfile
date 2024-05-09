@@ -7,7 +7,7 @@ WORKDIR /code
 
 COPY requirements.txt /code/
 
-RUN pip install --upgrade pip
+# RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN pip install django-cors-headers djangorestframework coreapi djangorestframework-simplejwt psycopg2-binary
 
