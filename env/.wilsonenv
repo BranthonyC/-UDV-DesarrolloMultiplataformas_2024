@@ -1,0 +1,8 @@
+POSTGRES_USER=wilson
+POSTGRES_PASSWORD=wilson
+POSTGRES_DB=wilson_db
+DB_NAME=wilson_db
+DB_USER=wilson
+DB_PASSWORD=wilson
+DB_HOST=db
+DB_PORT=5432

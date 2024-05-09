@@ -1,0 +1,8 @@
+POSTGRES_USER=alejandro
+POSTGRES_PASSWORD=alejandro
+POSTGRES_DB=alejandro_db
+DB_NAME=alejandro_db
+DB_USER=alejandro
+DB_PASSWORD=alejandro
+DB_HOST=db
+DB_PORT=5432

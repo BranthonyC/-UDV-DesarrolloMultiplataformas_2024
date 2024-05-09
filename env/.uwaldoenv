@@ -1,0 +1,8 @@
+POSTGRES_USER=uwaldo
+POSTGRES_PASSWORD=uwaldo
+POSTGRES_DB=uwaldo_db
+DB_NAME=uwaldo_db
+DB_USER=uwaldo
+DB_PASSWORD=uwaldo
+DB_HOST=db
+DB_PORT=5432

@@ -1,0 +1,8 @@
+POSTGRES_USER=carlos
+POSTGRES_PASSWORD=carlos
+POSTGRES_DB=carlos_db
+DB_NAME=carlos_db
+DB_USER=carlos
+DB_PASSWORD=carlos
+DB_HOST=db
+DB_PORT=5432

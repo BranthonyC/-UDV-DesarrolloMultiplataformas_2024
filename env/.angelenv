@@ -1,0 +1,8 @@
+POSTGRES_USER=angel
+POSTGRES_PASSWORD=angel
+POSTGRES_DB=angel_db
+DB_NAME=angel_db
+DB_USER=angel
+DB_PASSWORD=angel
+DB_HOST=db
+DB_PORT=5432

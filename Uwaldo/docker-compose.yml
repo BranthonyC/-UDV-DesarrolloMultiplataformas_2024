@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: Uwaldo
+      POSTGRES_PASSWORD: 1234567890
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:7070
+    volumes:
+      - .:/code
+    ports:
+      - "7070:7070"
+    depends_on:
+      - db

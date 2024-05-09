@@ -1,0 +1,39 @@
+# version: '3.8'
+
+# services:
+
+
+#   db:
+#     container_name: postgre
+#     image: postgres
+#     restart: always
+#     shm_size: 128mb
+#     environment:
+#       POSTGRES_DB: "mascotasfelices"
+#       POSTGRES_USER: "apimascotasfelices"
+#       POSTGRES_PASSWORD: "abc123**"
+#     expose:
+#       - 5432
+#     networks:
+#       - veterinaria
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data  
+
+
+#   api_veterinaria:
+#     build: .
+#     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+#     restart: always
+#     ports:
+#       - "8000:8000"
+#     networks:
+#       - veterinaria
+#     depends_on:
+#       - db
+
+# networks:
+#   veterinaria:
+#     driver: bridge
+
+# volumes:
+#   postgres_data:

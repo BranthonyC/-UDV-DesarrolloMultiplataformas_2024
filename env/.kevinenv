@@ -1,0 +1,8 @@
+POSTGRES_USER=kevin
+POSTGRES_PASSWORD=kevin
+POSTGRES_DB=kevin_db
+DB_NAME=kevin_db
+DB_USER=kevin
+DB_PASSWORD=kevin
+DB_HOST=db
+DB_PORT=5432

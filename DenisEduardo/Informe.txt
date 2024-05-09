@@ -1,0 +1,6 @@
+En el proyecto se lleva lo que es el incio y 
+en estos momentos que es 4 de abril, se tiene la base de como poder empezar a 
+realizar las listas de todas las tablas que usaremos en nuestro programa
+
+considero que esto estara finalizado para el 15 de abril y poder tener 4
+dias para poder realizar pruebas y pulido.

@@ -1,0 +1,8 @@
+POSTGRES_USER=denis
+POSTGRES_PASSWORD=denis
+POSTGRES_DB=denis_db
+DB_NAME=denis_db
+DB_USER=denis
+DB_PASSWORD=denis
+DB_HOST=db
+DB_PORT=5432

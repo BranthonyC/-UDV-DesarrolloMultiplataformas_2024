@@ -1,0 +1,104 @@
+version: '3'
+services:
+  db:
+    ports:
+      - "5432:5432"
+    container_name: postgre
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_DB: "alvaro_db"
+      POSTGRES_USER: "alvaro"
+      POSTGRES_PASSWORD: "alvaro"
+    expose:
+      - 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  
+  alvaro_sosa:
+    build: 
+      context: ./AlvaroSosa/veterinaria
+      dockerfile: Dockerfile-api
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8001:8000"
+    env_file:
+      - ./env/.alvaroenv
+    depends_on:
+      - db
+  alejandro_noriega:
+    build: ./AlejandroNoriega/
+    command: python manage.py runserver 0.0.0.0:8000
+    restart: always
+    env_file:
+      - ./env/.alejandroenv
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  angel_benito:
+    build: ./AngelBenito/
+    command: python manage.py runserver
+    ports:
+      - "8002:8000"
+    env_file:
+      - ./env/.angelenv
+    depends_on:
+      - db
+  carlos_lemus:
+    build: ./CarlosLemus/server
+    command: python manage.py runserver
+    ports:
+      - "8003:8000"
+    env_file:
+      - ./env/.carlosenv
+    depends_on:
+      - db
+  denis_eduardo:
+    build: ./DenisEduardo/
+    command: python manage.py runserver
+    ports:
+      - "8004:8000"
+    env_file:
+      - ./env/.denisenv
+    depends_on:
+      - db
+  erik_sosa:
+    build: ./ErikSosa/
+    command: python manage.py runserver
+    ports:
+      - "8005:8000"
+    env_file:
+      - ./env/.erikenv
+    depends_on:
+      - db
+  kevin_rosales:
+    build: ./KevinRosales/
+    command: python manage.py runserver
+    ports:
+      - "8006:8000"
+    env_file:
+      - ./env/.kevinenv
+    depends_on:
+      - db
+  uwaldo:
+    build: ./Uwaldo/
+    command: python manage.py runserver
+    ports:
+      - "8007:8000"
+    env_file:
+      - ./env/.uwaldoenv
+    depends_on:
+      - db
+  wilson_andre:
+    build: ./WilsonAndre/
+    command: python manage.py runserver
+    ports:
+      - "8008:8000"
+    env_file:
+      - ./env/.wilsonenv
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

@@ -1,0 +1,8 @@
+POSTGRES_USER=alvaro
+POSTGRES_PASSWORD=alvaro
+POSTGRES_DB=alvaro_db
+DB_NAME=alvaro_db
+DB_USER=alvaro
+DB_PASSWORD=alvaro
+DB_HOST=db
+DB_PORT=5432
