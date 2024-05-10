@@ -28,7 +28,9 @@ SECRET_KEY = 'django-insecure-6jv7tn+3=gm=c1p1+k_z1%#^&kxflr!h58%l&qs^+o-gwrovd_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+"demu.codersatelier.com"
+]
 
 # Define STATIC_ROOT para indicar dónde se recolectarán los archivos estáticos
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
