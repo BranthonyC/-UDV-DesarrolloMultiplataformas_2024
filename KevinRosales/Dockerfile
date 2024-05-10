@@ -15,5 +15,3 @@ RUN pip install psycopg2-binary
 EXPOSE 8000
 
 COPY . /code/
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

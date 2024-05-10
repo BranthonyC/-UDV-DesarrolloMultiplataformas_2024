@@ -14,5 +14,3 @@ RUN pip install django-cors-headers djangorestframework coreapi djangorestframew
 EXPOSE 8000
 
 COPY . /code/
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
