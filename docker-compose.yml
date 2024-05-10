@@ -1,18 +1,24 @@
 version: '3'
 services:
   db:
+    # ports:
+    #   - 5432:5432
+    # image: postgres:13
+    # volumes:
+    #   - projectdb:/var/lib/postgresql/data
+    # environment:
+    #   - POSTGRES_HOST_AUTH_METHOD=trust
+    #   - DBUSER=postgres
+    #   - DBPASSWORD=postgres
     ports:
       - "5432:5432"
-    container_name: postgre
-    image: postgres
+    image: postgres:13
     restart: always
-    shm_size: 128mb
+    # shm_size: 128mb
     environment:
-      POSTGRES_DB: "postgres"
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-    expose:
-      - 5432
+      POSTGRES_HOST_AUTH_METHOD: trust
+      DBUSER: "postgres"
+      DBPASSWORD: "postgres"
     volumes:
       - postgres_data:/var/lib/postgresql/data  
   # alvaro_sosa:
