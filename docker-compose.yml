@@ -99,6 +99,28 @@ services:
       - ./env/.wilsonenv
     depends_on:
       - db
+  
+  nginx:
+    image: nginx:1.19.0
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /home/demu/AllProjects/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/lib/letsencrypt:/var/lib/letsencrypt
+      - /var/www/html:/var/www/html
+    restart: always
+    depends_on:
+      - alejandro_noriega
+      - angel_benito
+      - carlos_lemus
+      - denis_eduardo
+      - erik_sosa
+      - kevin_rosales
+      - uwaldo
+      - wilson_andre
 
 volumes:
   postgres_data:
