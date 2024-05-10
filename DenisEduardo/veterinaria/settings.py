@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-l-^d#-6vd+lm@n5ompc-!fhl2+o8l#3e%rxaiw5+d0pfd!)a6s
 DEBUG = True
 
 ALLOWED_HOSTS = [
-"demu.codersatelier.com"
+"*"
 ]
 
 
