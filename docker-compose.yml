@@ -1,40 +1,22 @@
 version: '3'
 services:
   db:
-    # ports:
-    #   - 5432:5432
-    # image: postgres:13
-    # volumes:
-    #   - projectdb:/var/lib/postgresql/data
-    # environment:
-    #   - POSTGRES_HOST_AUTH_METHOD=trust
-    #   - DBUSER=postgres
-    #   - DBPASSWORD=postgres
     ports:
       - "5432:5432"
     image: postgres:13
     restart: always
-    # shm_size: 128mb
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
       DBUSER: "postgres"
       DBPASSWORD: "postgres"
     volumes:
       - postgres_data:/var/lib/postgresql/data  
-  # alvaro_sosa:
-  #   build: 
-  #     context: ./AlvaroSosa/veterinaria
-  #     dockerfile: Dockerfile-api
-  #   command: python manage.py runserver 0.0.0.0:8000
-  #   ports:
-  #     - "8001:8000"
-  #   env_file:
-  #     - ./env/.alvaroenv
-  #   depends_on:
-  #     - db
+    networks:
+      - mynetwork
+
   alejandro_noriega:
     build: ./AlejandroNoriega/
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
     restart: always
     env_file:
       - ./env/.alejandroenv
@@ -42,70 +24,93 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    networks:
+      - mynetwork
+
   angel_benito:
     build: ./AngelBenito/
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
     ports:
       - "8002:8000"
     env_file:
       - ./env/.angelenv
     depends_on:
       - db
+    networks:
+      - mynetwork
+
   carlos_lemus:
     build: ./CarlosLemus/server
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
     ports:
       - "8003:8000"
     env_file:
       - ./env/.carlosenv
     depends_on:
       - db
+    networks:
+      - mynetwork
+
   denis_eduardo:
     build: ./DenisEduardo/
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
     ports:
       - "8004:8000"
     env_file:
       - ./env/.denisenv
     depends_on:
       - db
+    networks:
+      - mynetwork
+
   erik_sosa:
     build: ./ErikSosa/
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
     ports:
       - "8005:8000"
     env_file:
       - ./env/.erikenv
     depends_on:
       - db
+    networks:
+      - mynetwork
+
   kevin_rosales:
     build: ./KevinRosales/
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
     ports:
       - "8006:8000"
     env_file:
       - ./env/.kevinenv
     depends_on:
       - db
+    networks:
+      - mynetwork
+
   uwaldo:
     build: ./Uwaldo/
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
     ports:
       - "8007:8000"
     env_file:
       - ./env/.uwaldoenv
     depends_on:
       - db
+    networks:
+      - mynetwork
+
   wilson_andre:
     build: ./WilsonAndre/
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
     ports:
       - "8008:8000"
     env_file:
       - ./env/.wilsonenv
     depends_on:
       - db
-  
+    networks:
+      - mynetwork
+
   nginx:
     image: nginx:1.19.0
     container_name: nginx
@@ -127,6 +132,135 @@ services:
       - kevin_rosales
       - uwaldo
       - wilson_andre
+    networks:
+      - mynetwork
 
 volumes:
   postgres_data:
+
+networks:
+  mynetwork:
+    driver: bridge
+
+# version: '3'
+# services:
+#   db:
+#     ports:
+#       - "5432:5432"
+#     image: postgres:13
+#     restart: always
+#     environment:
+#       POSTGRES_HOST_AUTH_METHOD: trust
+#       DBUSER: "postgres"
+#       DBPASSWORD: "postgres"
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data  
+#   # alvaro_sosa:
+#   #   build: 
+#   #     context: ./AlvaroSosa/veterinaria
+#   #     dockerfile: Dockerfile-api
+#   #   command: python manage.py runserver 0.0.0.0:8000
+#   #   ports:
+#   #     - "8001:8000"
+#   #   env_file:
+#   #     - ./env/.alvaroenv
+#   #   depends_on:
+#   #     - db
+#   alejandro_noriega:
+#     build: ./AlejandroNoriega/
+#     command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
+#     restart: always
+#     env_file:
+#       - ./env/.alejandroenv
+#     ports:
+#       - "8000:8000"
+#     depends_on:
+#       - db
+#   angel_benito:
+#     build: ./AngelBenito/
+#     command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
+#     ports:
+#       - "8002:8000"
+#     env_file:
+#       - ./env/.angelenv
+#     depends_on:
+#       - db
+#   carlos_lemus:
+#     build: ./CarlosLemus/server
+#     command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
+#     ports:
+#       - "8003:8000"
+#     env_file:
+#       - ./env/.carlosenv
+#     depends_on:
+#       - db
+#   denis_eduardo:
+#     build: ./DenisEduardo/
+#     command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
+#     ports:
+#       - "8004:8000"
+#     env_file:
+#       - ./env/.denisenv
+#     depends_on:
+#       - db
+#   erik_sosa:
+#     build: ./ErikSosa/
+#     command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
+#     ports:
+#       - "8005:8000"
+#     env_file:
+#       - ./env/.erikenv
+#     depends_on:
+#       - db
+#   kevin_rosales:
+#     build: ./KevinRosales/
+#     command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
+#     ports:
+#       - "8006:8000"
+#     env_file:
+#       - ./env/.kevinenv
+#     depends_on:
+#       - db
+#   uwaldo:
+#     build: ./Uwaldo/
+#     command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
+#     ports:
+#       - "8007:8000"
+#     env_file:
+#       - ./env/.uwaldoenv
+#     depends_on:
+#       - db
+#   wilson_andre:
+#     build: ./WilsonAndre/
+#     command: python manage.py runserver 0.0.0.0:8000 && python manage.py migrate
+#     ports:
+#       - "8008:8000"
+#     env_file:
+#       - ./env/.wilsonenv
+#     depends_on:
+#       - db
+  
+#   nginx:
+#     image: nginx:1.19.0
+#     container_name: nginx
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     volumes:
+#       - /home/demu/AllProjects/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+#       - /etc/letsencrypt:/etc/letsencrypt
+#       - /var/lib/letsencrypt:/var/lib/letsencrypt
+#       - /var/www/html:/var/www/html
+#     restart: always
+#     depends_on:
+#       - alejandro_noriega
+#       - angel_benito
+#       - carlos_lemus
+#       - denis_eduardo
+#       - erik_sosa
+#       - kevin_rosales
+#       - uwaldo
+#       - wilson_andre
+
+# volumes:
+#   postgres_data:

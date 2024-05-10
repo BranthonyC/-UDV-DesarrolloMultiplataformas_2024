@@ -12,3 +12,5 @@ RUN pip install psycopg2-binary
 RUN pip install -r requirements.txt
 
 COPY . /code/
+
+EXPOSE 8000
